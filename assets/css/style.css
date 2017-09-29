@@ -7,3 +7,13 @@ h1 {
 #clear {
   text-align: center;
 }
+#start {
+  text-align: center;
+}
+body {
+  background-image: url(file:///C:/Users/emily/Desktop/TriviaGame/assets/images/background-disney.jpg);
+  position: static;
+}
+p {
+  font-weight: 700;
+}

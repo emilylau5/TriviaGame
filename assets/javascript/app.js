@@ -15,10 +15,41 @@ var timer = 10;
 var intervalID;
 var correctAnswers = 0;
 var incorrectAnswers = 0;
-var unanswered = 0;
+var unanswered = 4;
+// var questions = {
+//   numberOne: "What is the name of the baboon in The Lion King?", 
+//   numberTwo: "Who trained Hercules to go from zero to hero?",
+//   numberThree: "Who is Woody's owner in The Toy Story?",
+//   numberFour: "What is Sleeping Beauty's real name?",
+//   };
+// var answers = {
+//   numberOne: ["Rakfiki", "Tafiki", "Zafiki","Nafiki"],
+//   numberTwo: ["Zeus", "Zack", "Phil", "Toby"],
+//   numberThree: ["Eric", "Andy", "Tommy", "Billy"],
+//   numberFour: ["Aurora", "Crystal", "Calypso", "Ariana"],
+
+// }
+function reset() {
+  $("#clear").hide()
+  $("#start").html("<button type=button>" + "Start" + "</buttons>");
+  $("#start").on("click", function() {
+      start();
+  })
+  $("#buttons").hide();
+}
+function start() {
+testTimer();
+$("#clear").show()
+$("#start").hide();
+}
 function displayScore() {
   $("#clear").html("Correct Answers: " + correctAnswers + "<br>" + "Incorrect Answers: " + incorrectAnswers + "<br>" +
-    "Unanswered Questions: " + unanswered);
+    "Unanswered Questions: " + (unanswered - (correctAnswers + incorrectAnswers)));
+  // var resetBtn = $("<button>");
+  $("#buttons").append("<button type=button>" + "Reset" + "</buttons>");
+  $("#buttons").on("click", function() {
+    reset();
+  })
 }
 function testTimer() {
   intervalID = setInterval(decrement, 1000)
@@ -28,11 +59,20 @@ function decrement(){
   $("#timer").html("<h2>" + timer + "<h2>");
 
   if (timer === 0) {
-    alert("Time Up!");
     displayScore();
 
   }
 }
+$(".correct").on("click", function() {
+  correctAnswers++;
+})
 
+$(".incorrect").on("click", function() {
+  incorrectAnswers++;
+})
 
-testTimer();
+$("#done").on("click", function(event) {
+displayScore();
+})
+
+reset();
