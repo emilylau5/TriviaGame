@@ -1,5 +1,6 @@
 h1 {
   text-align: center;
+  font-size: 50px;
 }
 #timer {
   text-align: center;
@@ -12,7 +13,6 @@ h1 {
 }
 body {
   background-image: url(file:///C:/Users/emily/Desktop/TriviaGame/assets/images/background-disney.jpg);
-  position: static;
 }
 p {
   font-weight: 700;
